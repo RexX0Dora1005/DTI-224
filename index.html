@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DTI224 JavaScript Lab</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Inter:wght@400;500;600;700&display=swap');
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 16px;
+            background: #e7e3da;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .panel {
+            width: 100%;
+            max-width: 400px;
+            background: #ded7c7;
+            border-radius: 20px;
+            padding: 26px 24px 28px;
+            box-shadow:
+                0 2px 0 #bdb49d inset,
+                0 14px 30px rgba(0, 0, 0, 0.18);
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 0.7rem;
+            letter-spacing: 0.08em;
+            color: #6b6455;
+            text-transform: uppercase;
+            margin-bottom: 14px;
+        }
+
+        .brand .dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: #3d6b8a;
+            display: inline-block;
+        }
+
+        h1 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #2b2a25;
+            margin: 0 0 4px 0;
+        }
+
+        .subtitle {
+            color: #6b6455;
+            font-size: 0.95rem;
+            margin: 0 0 22px 0;
+        }
+
+        nav {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        nav a {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            text-decoration: none;
+            background: #33363d;
+            color: #f0efe9;
+            padding: 14px 16px;
+            border-radius: 10px;
+            font-size: 0.98rem;
+            font-weight: 500;
+            transition: background 0.15s ease, transform 0.08s ease;
+        }
+
+        nav a:hover {
+            background: #45484f;
+        }
+
+        nav a:active {
+            transform: scale(0.98);
+        }
+
+        nav a .arrow {
+            font-family: 'Share Tech Mono', monospace;
+            color: #9fa3ab;
+        }
+
+        nav a.primary {
+            background: #3d6b8a;
+        }
+
+        nav a.primary:hover {
+            background: #2c4f66;
+        }
+
+        footer {
+            margin-top: 22px;
+            text-align: center;
+            font-size: 0.78rem;
+            color: #6b6455;
+        }
+
+        @media (max-width: 420px) {
+            .panel {
+                padding: 22px 18px 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="panel">
+
+        <div class="brand"><span class="dot"></span>JS LAB · MODEL 100</div>
+
+        <h1>DTI224 JavaScript Lab</h1>
+        <p class="subtitle">Select an assignment.</p>
+
+        <nav>
+            <a class="primary" href="resume.html">Resume <span class="arrow">→</span></a>
+            <a href="hobby.html">Hobby <span class="arrow">→</span></a>
+            <a href="Converter.html">Converter <span class="arrow">→</span></a>
+            <a href="Grading.html">Grading <span class="arrow">→</span></a>
+            <a href="Change.html">Change <span class="arrow">→</span></a>
+            <a href="distance.html">Distance <span class="arrow">→</span></a>
+        </nav>
+
+        <footer>DTI224 JavaScript Lab</footer>
+
+    </div>
+
+</body>
+</html>

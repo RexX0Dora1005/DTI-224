@@ -1,0 +1,168 @@
+/* ==========================================================================
+   Calculator-tools stylesheet — retro LCD calculator look
+   Shared by Change.html, Converter.html, Grading.html
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Inter:wght@400;500;600&display=swap');
+
+:root {
+    --room: #e7e3da;
+    --case: #ded7c7;
+    --case-edge: #bdb49d;
+    --screen-bg: #c7d1b8;
+    --screen-ink: #2e3a26;
+    --key: #33363d;
+    --key-text: #f0efe9;
+    --accent: #3d6b8a;
+    --accent-dark: #2c4f66;
+    --label: #6b6455;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 16px;
+    background: var(--room);
+    font-family: 'Inter', sans-serif;
+    color: var(--label);
+}
+
+.calculator {
+    width: 100%;
+    max-width: 360px;
+    background: var(--case);
+    border-radius: 20px;
+    padding: 22px 22px 26px;
+    box-shadow:
+        0 2px 0 var(--case-edge) inset,
+        0 14px 30px rgba(0, 0, 0, 0.18);
+}
+
+.brand {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+    color: var(--label);
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    padding: 0 2px;
+}
+
+.brand .dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--accent);
+    display: inline-block;
+    margin-right: 6px;
+}
+
+h2, h1 {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: #2b2a25;
+    margin: 0 0 14px 0;
+    text-align: center;
+}
+
+.screen {
+    background: var(--screen-bg);
+    border: 1px solid #a9b394;
+    border-radius: 8px;
+    padding: 18px 16px;
+    min-height: 56px;
+    margin-bottom: 18px;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 1.05rem;
+    line-height: 1.5;
+    color: var(--screen-ink);
+    box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.18);
+    overflow-wrap: break-word;
+}
+
+.screen:empty::before {
+    content: "0";
+    opacity: 0.4;
+}
+
+.field {
+    margin-bottom: 14px;
+}
+
+.field label {
+    display: block;
+    font-size: 0.8rem;
+    font-weight: 500;
+    margin-bottom: 6px;
+    color: var(--label);
+}
+
+.field input[type="number"],
+.field select {
+    width: 100%;
+    padding: 10px 12px;
+    border-radius: 8px;
+    border: 1px solid var(--case-edge);
+    background: #fbfaf6;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 1rem;
+    color: #2b2a25;
+}
+
+.field input[type="number"]:focus,
+.field select:focus {
+    outline: 2px solid var(--accent);
+    outline-offset: 1px;
+}
+
+.keys {
+    display: flex;
+    gap: 10px;
+}
+
+.key {
+    flex: 1;
+    padding: 12px 10px;
+    border: none;
+    border-radius: 10px;
+    background: var(--key);
+    color: var(--key-text);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: transform 0.08s ease, background 0.15s ease;
+}
+
+.key:hover {
+    background: #45484f;
+}
+
+.key:active {
+    transform: scale(0.96);
+}
+
+.key--accent {
+    background: var(--accent);
+}
+
+.key--accent:hover {
+    background: var(--accent-dark);
+}
+
+@media (max-width: 420px) {
+    .calculator {
+        padding: 18px 16px 22px;
+    }
+}

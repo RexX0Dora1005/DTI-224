@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Measurement Converter</title>
+    <link rel="stylesheet" href="Change-style.css">
+</head>
+<body>
+
+<div class="calculator">
+    <div class="brand"><span><span class="dot"></span>JS LAB · MODEL 100</span><span>CONVERT</span></div>
+
+    <h2>Measurement Converter</h2>
+
+    <div class="screen" id="result"></div>
+
+    <div class="field">
+        <label for="value">Enter Value</label>
+        <input type="number" id="value">
+    </div>
+
+    <div class="field">
+        <label for="convert">Select Conversion</label>
+        <select id="convert">
+            <option value="cmToM">Centimeter to Meter</option>
+            <option value="mToCm">Meter to Centimeter</option>
+            <option value="kmToM">Kilometer to Meter</option>
+            <option value="mToKm">Meter to Kilometer</option>
+            <option value="cToF">Celsius to Fahrenheit</option>
+            <option value="fToC">Fahrenheit to Celsius</option>
+        </select>
+    </div>
+
+    <div class="keys">
+        <button class="key key--accent" onclick="convert()">Convert</button>
+    </div>
+</div>
+
+<script>
+function convert() {
+
+    let value = parseFloat(document.getElementById("value").value);
+    let choice = document.getElementById("convert").value;
+    let answer;
+
+    switch(choice){
+
+        case "cmToM":
+            answer = value / 100 + " Meter";
+            break;
+
+        case "mToCm":
+            answer = value * 100 + " Centimeter";
+            break;
+
+        case "kmToM":
+            answer = value * 1000 + " Meter";
+            break;
+
+        case "mToKm":
+            answer = value / 1000 + " Kilometer";
+            break;
+
+        case "cToF":
+            answer = (value * 9/5) + 32 + " °F";
+            break;
+
+        case "fToC":
+            answer = ((value - 32) * 5/9).toFixed(2) + " °C";
+            break;
+
+        default:
+            answer = "Invalid Selection";
+    }
+
+    document.getElementById("result").innerHTML = "Result: " + answer;
+}
+</script>
+
+</body>
+</html>
