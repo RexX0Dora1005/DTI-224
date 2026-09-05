@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drag & Drop Assignment - DTI 224</title>
+    <link rel="stylesheet" href="Change-style.css">
+    <style>
+        .calculator {
+            max-width: 480px;
+        }
+
+        .dropzone-container {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+
+        .dropzone-label {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 6px;
+            color: var(--label);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .dropzone-tag {
+            font-size: 0.72rem;
+            padding: 2px 8px;
+            border-radius: 4px;
+            background: #bdb49d;
+            color: #2b2a25;
+        }
+
+        .dropzone {
+            min-height: 110px;
+            border: 2px dashed #a9b394;
+            border-radius: 12px;
+            background: #fbfaf6;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px;
+            transition: all 0.2s ease;
+            position: relative;
+        }
+
+        .dropzone.drag-over {
+            border-color: var(--accent);
+            background: #eef4f8;
+            transform: scale(1.01);
+            box-shadow: 0 0 0 3px rgba(61, 107, 138, 0.2);
+        }
+
+        .dropzone:empty::before {
+            content: "Drop picture here";
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 0.85rem;
+            color: #9c9688;
+            pointer-events: none;
+        }
+
+        .draggable-item {
+            cursor: grab;
+            user-select: none;
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 18px;
+            background: #ffffff;
+            border: 1.5px solid #d0c9b8;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+            transition: transform 0.15s ease, box-shadow 0.15s ease;
+        }
+
+        .draggable-item:active {
+            cursor: grabbing;
+            transform: scale(1.05);
+            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
+        }
+
+        .item-icon {
+            font-size: 2.4rem;
+            line-height: 1;
+            margin-bottom: 4px;
+        }
+
+        .item-text {
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #2b2a25;
+        }
+    </style>
+</head>
+<body>
+
+<div class="calculator">
+    <div class="brand">
+        <span><span class="dot"></span>JS LAB · MODEL 100</span>
+        <span>DRAG &amp; DROP</span>
+    </div>
+
+    <h1>HTML5 Drag &amp; Drop</h1>
+
+    <!-- LCD Status Screen -->
+    <div class="screen" id="result">
+        Position: Outside the Box (Tray)
+    </div>
+
+    <div class="dropzone-container">
+        <!-- Zone 1: Outside the box -->
+        <div>
+            <div class="dropzone-label">
+                <span>Tray Area (Outside)</span>
+                <span class="dropzone-tag">Original Zone</span>
+            </div>
+            <div 
+                id="box-outside" 
+                class="dropzone" 
+                ondrop="drop(event)" 
+                ondragover="allowDrop(event)"
+                ondragenter="highlight(event)" 
+                ondragleave="unhighlight(event)"
+            >
+                <div 
+                    id="dragItem" 
+                    class="draggable-item" 
+                    draggable="true" 
+                    ondragstart="drag(event)"
+                    ondragend="dragEnd(event)"
+                    title="Click and drag me!"
+                >
+                    <span class="item-icon">🎓</span>
+                    <span class="item-text">KBU Student</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Zone 2: Inside the box -->
+        <div>
+            <div class="dropzone-label">
+                <span>The Box (Inside)</span>
+                <span class="dropzone-tag">Target Rectangle</span>
+            </div>
+            <div 
+                id="box-inside" 
+                class="dropzone" 
+                ondrop="drop(event)" 
+                ondragover="allowDrop(event)"
+                ondragenter="highlight(event)" 
+                ondragleave="unhighlight(event)"
+            >
+                <!-- Image can be dragged into and out of this box -->
+            </div>
+        </div>
+    </div>
+
+    <div class="keys">
+        <button type="button" class="key key--accent" onclick="resetPosition()">Reset</button>
+        <button type="button" class="key" onclick="goBack()">Back</button>
+    </div>
+</div>
+
+<script>
+    // 1. Allow dropping by preventing the default browser behavior
+    function allowDrop(ev) {
+        ev.preventDefault();
+    }
+
+    // 2. Set the data to be transferred when dragging starts
+    function drag(ev) {
+        ev.dataTransfer.setData("text/plain", ev.currentTarget.id);
+        ev.dataTransfer.effectAllowed = "move";
+        ev.currentTarget.style.opacity = "0.4";
+    }
+
+    // Reset opacity when drag ends
+    function dragEnd(ev) {
+        ev.currentTarget.style.opacity = "1";
+    }
+
+    // 3. Handle drop event to move picture in or out of the box
+    function drop(ev) {
+        ev.preventDefault();
+        unhighlight(ev);
+
+        const id = ev.dataTransfer.getData("text/plain");
+        const draggedElement = document.getElementById(id);
+
+        // Find the nearest dropzone container (handles child element drop targets)
+        const dropzone = ev.target.closest(".dropzone");
+
+        if (dropzone && draggedElement) {
+            dropzone.appendChild(draggedElement);
+            updateStatus(dropzone.id);
+        }
+    }
+
+    // Visual feedback when hovering over a drop target
+    function highlight(ev) {
+        const dropzone = ev.target.closest(".dropzone");
+        if (dropzone) {
+            dropzone.classList.add("drag-over");
+        }
+    }
+
+    function unhighlight(ev) {
+        const dropzone = ev.target.closest(".dropzone");
+        if (dropzone) {
+            dropzone.classList.remove("drag-over");
+        }
+    }
+
+    // 4. Update the LCD status display
+    function updateStatus(zoneId) {
+        const statusElem = document.getElementById("result");
+        if (zoneId === "box-inside") {
+            statusElem.innerHTML = "Status: <strong>Inside the Box</strong><br><small style='opacity:0.7'>You can now drag it back out!</small>";
+        } else {
+            statusElem.innerHTML = "Status: <strong>Outside the Box (Tray)</strong><br><small style='opacity:0.7'>Drag it into the target rectangle.</small>";
+        }
+    }
+
+    // Helper: Reset picture back to Tray
+    function resetPosition() {
+        const outsideBox = document.getElementById("box-outside");
+        const item = document.getElementById("dragItem");
+        outsideBox.appendChild(item);
+        updateStatus("box-outside");
+    }
+
+    // BOM Back function with fallback to index.html
+    function goBack() {
+        if (window.history.length > 1) {
+            window.history.back();
+        } else {
+            window.location.href = "index.html";
+        }
+    }
+</script>
+
+</body>
+</html>
