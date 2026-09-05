@@ -2,44 +2,87 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>My Resume</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Resume - Han Win Htun</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin-bottom: 24px;
+            text-decoration: none;
+            color: var(--muted);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: color 0.15s ease;
+        }
+        .back-link:hover {
+            color: var(--ink);
+        }
+        .contact-link {
+            color: var(--ink);
+            text-decoration: none;
+        }
+        .contact-link:hover {
+            color: var(--accent-ink);
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
 
 <div class="container">
 
+    <a href="index.html" class="back-link">&larr; Back to Hub</a>
+
     <header>
         <h1>HAN WIN HTUN</h1>
-        <p>Student | Future Software Developer</p>
+        <p>Student ID: 240702404501 | Future Software Developer</p>
     </header>
 
     <section>
         <h2>Personal Information</h2>
         <p><strong>Name:</strong> Han Win Htun</p>
-        <p><strong>Email:</strong> winhtunhan05@gmail.com</p>
-        <p><strong>Phone:</strong> +66-0825542304</p>
+        <p><strong>Student ID:</strong> 240702404501</p>
+        <p><strong>Email:</strong> <a href="mailto:winhtunhan05@gmail.com" class="contact-link">winhtunhan05@gmail.com</a></p>
+        <p><strong>Phone:</strong> <a href="tel:+660825542304" class="contact-link">+66-0825542304</a></p>
         <p><strong>Address:</strong> Bangkok, Thailand</p>
+        <p><strong>GitHub:</strong> <a href="https://github.com/RexX0Dora1005" target="_blank" rel="noopener noreferrer" class="contact-link">github.com/RexX0Dora1005</a></p>
     </section>
 
     <section>
         <h2>Education</h2>
-        <p>Bachelor's Degree in Information Technology</p>
+        <p><strong>Program:</strong> Bachelor of Science in Digital Technology and Innovation (DTI)</p>
+        <p><strong>University:</strong> Kasem Bundit University (KBU), Bangkok, Thailand</p>
+        <p><strong>Status:</strong> Active Undergraduate Student</p>
     </section>
 
     <section>
-        <h2>Skills</h2>
+        <h2>Technical & Professional Skills</h2>
         <ul>
-            <li>HTML</li>
-            <li>CSS</li>
+            <li>HTML5 & Semantic Web</li>
+            <li>CSS3 & Responsive Design</li>
+            <li>JavaScript (ES6+)</li>
+            <li>DOM & BOM Manipulation</li>
+            <li>React Native & Expo</li>
+            <li>Git & GitHub Version Control</li>
+            <li>Web Geolocation APIs</li>
             <li>Microsoft Office</li>
             <li>Problem Solving</li>
-            <li>Teamwork</li>
+            <li>Teamwork & Collaboration</li>
         </ul>
     </section>
 
+    <section>
+        <h2>Academic Coursework</h2>
+        <p><strong>DTI 224:</strong> Web and Mobile Application Development</p>
+        <p><strong>DTI 324:</strong> Special Topic in Digital Startup & Venture Deconstruction</p>
+    </section>
+
     <footer>
-        <p>&copy; 2026 Han Win Htun</p>
+        <p>&copy; 2026 Han Win Htun &bull; Kasem Bundit University</p>
     </footer>
 
 </div>
