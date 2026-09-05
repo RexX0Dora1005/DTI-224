@@ -3,144 +3,112 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DTI224 JavaScript Lab</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Inter:wght@400;500;600;700&display=swap');
-
-        * {
-            box-sizing: border-box;
-        }
-
-        body {
-            margin: 0;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 40px 16px;
-            background: #e7e3da;
-            font-family: 'Inter', sans-serif;
-        }
-
-        .panel {
-            width: 100%;
-            max-width: 400px;
-            background: #ded7c7;
-            border-radius: 20px;
-            padding: 26px 24px 28px;
-            box-shadow:
-                0 2px 0 #bdb49d inset,
-                0 14px 30px rgba(0, 0, 0, 0.18);
-        }
-
-        .brand {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            font-family: 'Share Tech Mono', monospace;
-            font-size: 0.7rem;
-            letter-spacing: 0.08em;
-            color: #6b6455;
-            text-transform: uppercase;
-            margin-bottom: 14px;
-        }
-
-        .brand .dot {
-            width: 7px;
-            height: 7px;
-            border-radius: 50%;
-            background: #3d6b8a;
-            display: inline-block;
-        }
-
-        h1 {
-            font-size: 1.3rem;
-            font-weight: 700;
-            color: #2b2a25;
-            margin: 0 0 4px 0;
-        }
-
-        .subtitle {
-            color: #6b6455;
-            font-size: 0.95rem;
-            margin: 0 0 22px 0;
-        }
-
-        nav {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-
-        nav a {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            text-decoration: none;
-            background: #33363d;
-            color: #f0efe9;
-            padding: 14px 16px;
-            border-radius: 10px;
-            font-size: 0.98rem;
-            font-weight: 500;
-            transition: background 0.15s ease, transform 0.08s ease;
-        }
-
-        nav a:hover {
-            background: #45484f;
-        }
-
-        nav a:active {
-            transform: scale(0.98);
-        }
-
-        nav a .arrow {
-            font-family: 'Share Tech Mono', monospace;
-            color: #9fa3ab;
-        }
-
-        nav a.primary {
-            background: #3d6b8a;
-        }
-
-        nav a.primary:hover {
-            background: #2c4f66;
-        }
-
-        footer {
-            margin-top: 22px;
-            text-align: center;
-            font-size: 0.78rem;
-            color: #6b6455;
-        }
-
-        @media (max-width: 420px) {
-            .panel {
-                padding: 22px 18px 24px;
-            }
-        }
-    </style>
+    <title>DTI 224 JavaScript Lab - Han Win Htun</title>
+    <link rel="stylesheet" href="index-style.css">
 </head>
 <body>
 
     <div class="panel">
 
-        <div class="brand"><span class="dot"></span>JS LAB · MODEL 100</div>
+        <div class="brand">
+            <span class="brand-tag"><span class="dot"></span>JS LAB &bull; KBU DTI</span>
+            <span class="student-badge">ID: 240702404501</span>
+        </div>
 
         <h1>DTI224 JavaScript Lab</h1>
-        <p class="subtitle">Select an assignment.</p>
+        <p class="subtitle">Academic coursework &amp; laboratory tools by <strong>Han Win Htun</strong> at Kasem Bundit University.</p>
 
         <nav>
-            <a class="primary" href="resume.html">Resume <span class="arrow">→</span></a>
-            <a href="hobby.html">Hobby <span class="arrow">→</span></a>
-            <a href="Converter.html">Converter <span class="arrow">→</span></a>
-            <a href="Grading.html">Grading <span class="arrow">→</span></a>
-            <a href="Change.html">Change <span class="arrow">→</span></a>
-            <a href="distance.html">Distance <span class="arrow">→</span></a>
-            <a href="drag.html">Drag & Drop <span class="arrow">→</span></a>
+            <!-- Section 1: Portfolio -->
+            <div class="section-title">Profile &amp; Portfolio</div>
+            
+            <a class="primary" href="resume.html">
+                <div class="link-content">
+                    <span class="link-icon">👨‍💻</span>
+                    <div class="link-title">
+                        <span>Developer Resume</span>
+                        <span class="link-sub">Personal profile, skills &amp; academics</span>
+                    </div>
+                </div>
+                <span class="arrow">&rarr;</span>
+            </a>
+
+            <a href="hobby.html">
+                <div class="link-content">
+                    <span class="link-icon">🎧</span>
+                    <div class="link-title">
+                        <span>Hobbies &amp; Interests</span>
+                        <span class="link-sub">DJ mixing, hiking, code &amp; travel</span>
+                    </div>
+                </div>
+                <span class="arrow">&rarr;</span>
+            </a>
+
+            <!-- Section 2: Laboratory Calculators -->
+            <div class="section-title">Laboratory Tools</div>
+
+            <a href="Converter.html">
+                <div class="link-content">
+                    <span class="link-icon">📐</span>
+                    <div class="link-title">
+                        <span>Measurement Converter</span>
+                        <span class="link-sub">Length, distance &amp; temperature (Lab 03 &amp; 06)</span>
+                    </div>
+                </div>
+                <span class="arrow">&rarr;</span>
+            </a>
+
+            <a href="Grading.html">
+                <div class="link-content">
+                    <span class="link-icon">🎓</span>
+                    <div class="link-title">
+                        <span>Grade Calculator</span>
+                        <span class="link-sub">Score to grade A&ndash;F evaluator (Lab 04 &amp; 06)</span>
+                    </div>
+                </div>
+                <span class="arrow">&rarr;</span>
+            </a>
+
+            <a href="Change.html">
+                <div class="link-content">
+                    <span class="link-icon">💰</span>
+                    <div class="link-title">
+                        <span>Change Calculator</span>
+                        <span class="link-sub">Denomination breakdown using loops (Lab 05 &amp; 06)</span>
+                    </div>
+                </div>
+                <span class="arrow">&rarr;</span>
+            </a>
+
+            <a href="distance.html">
+                <div class="link-content">
+                    <span class="link-icon">📍</span>
+                    <div class="link-title">
+                        <span>Distance to University</span>
+                        <span class="link-sub">Euclidean formula &amp; Geolocation (Lab 06)</span>
+                    </div>
+                </div>
+                <span class="arrow">&rarr;</span>
+            </a>
+
+            <!-- Section 3: Web APIs -->
+            <div class="section-title">Web APIs</div>
+
+            <a href="drag.html">
+                <div class="link-content">
+                    <span class="link-icon">✋</span>
+                    <div class="link-title">
+                        <span>Drag &amp; Drop API</span>
+                        <span class="link-sub">Bidirectional box movement</span>
+                    </div>
+                </div>
+                <span class="arrow">&rarr;</span>
+            </a>
         </nav>
 
-        <footer>DTI224 JavaScript Lab</footer>
+        <footer>
+            &copy; 2026 Han Win Htun &bull; Kasem Bundit University &bull; DTI 224
+        </footer>
 
     </div>
 

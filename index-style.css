@@ -1,0 +1,273 @@
+/* ==========================================================================
+   Modern Index Hub Stylesheet
+   DTI 224 JavaScript Lab • Han Win Htun (240702404501)
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&family=Share+Tech+Mono&display=swap');
+
+:root {
+  --bg: #0B0F19;
+  --bg-surface: #111827;
+  --panel-bg: rgba(17, 24, 39, 0.85);
+  --panel-border: rgba(255, 255, 255, 0.1);
+  --panel-hover-border: rgba(99, 102, 241, 0.4);
+  
+  --primary: #6366F1;
+  --primary-hover: #4F46E5;
+  --primary-glow: rgba(99, 102, 241, 0.3);
+  
+  --secondary: #06B6D4;
+  --accent: #F43F5E;
+  --emerald: #10B981;
+  
+  --text-main: #F8FAFC;
+  --text-muted: #94A3B8;
+  --text-sub: #64748B;
+  
+  --btn-bg: rgba(255, 255, 255, 0.03);
+  --btn-hover: rgba(30, 41, 59, 0.9);
+  --btn-border: rgba(255, 255, 255, 0.08);
+  
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-full: 9999px;
+  
+  --shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.5);
+  --shadow-glow: 0 0 35px -5px rgba(99, 102, 241, 0.2);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 16px;
+  background-color: var(--bg);
+  background-image: 
+    radial-gradient(circle at 15% 15%, rgba(99, 102, 241, 0.18), transparent 45%),
+    radial-gradient(circle at 85% 80%, rgba(6, 182, 212, 0.14), transparent 45%),
+    radial-gradient(circle at 50% 50%, rgba(244, 63, 94, 0.06), transparent 40%);
+  background-attachment: fixed;
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  color: var(--text-main);
+}
+
+.panel {
+  width: 100%;
+  max-width: 520px;
+  background: var(--panel-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--panel-border);
+  padding: 36px 32px 32px;
+  box-shadow: var(--shadow), var(--shadow-glow);
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.3s ease;
+}
+
+.panel::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent));
+}
+
+.brand {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  margin-bottom: 18px;
+}
+
+.brand-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.brand .dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--emerald);
+  box-shadow: 0 0 8px var(--emerald);
+  display: inline-block;
+  animation: pulse 2s infinite ease-in-out;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(0.85); }
+}
+
+.student-badge {
+  font-size: 0.72rem;
+  padding: 2px 8px;
+  border-radius: var(--radius-full);
+  background: rgba(99, 102, 241, 0.15);
+  color: #A5B4FC;
+  border: 1px solid rgba(99, 102, 241, 0.3);
+}
+
+h1 {
+  font-size: 1.85rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: #FFFFFF;
+  margin: 0 0 6px 0;
+  line-height: 1.2;
+}
+
+.subtitle {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  margin: 0 0 24px 0;
+  line-height: 1.5;
+}
+
+/* Category Section Headings */
+.section-title {
+  font-size: 0.72rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-sub);
+  margin: 18px 0 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.section-title::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--panel-border);
+}
+
+/* Navigation Links */
+nav {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+nav a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-decoration: none;
+  background: var(--btn-bg);
+  border: 1px solid var(--btn-border);
+  color: var(--text-main);
+  padding: 14px 16px;
+  border-radius: var(--radius-md);
+  font-size: 0.96rem;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+nav a:hover {
+  background: var(--btn-hover);
+  border-color: var(--primary);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+  color: #FFFFFF;
+}
+
+nav a:active {
+  transform: scale(0.98);
+}
+
+.link-content {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.link-icon {
+  font-size: 1.3rem;
+  width: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.link-title {
+  display: flex;
+  flex-direction: column;
+}
+
+.link-sub {
+  font-size: 0.76rem;
+  font-weight: 400;
+  color: var(--text-muted);
+  margin-top: 1px;
+}
+
+nav a .arrow {
+  font-family: 'JetBrains Mono', monospace;
+  color: var(--text-sub);
+  font-size: 1.1rem;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+nav a:hover .arrow {
+  transform: translateX(4px);
+  color: var(--primary);
+}
+
+/* Primary Highlight Link (Resume/Portfolio) */
+nav a.primary {
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.2), rgba(6, 182, 212, 0.15));
+  border-color: rgba(99, 102, 241, 0.4);
+}
+
+nav a.primary:hover {
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.35), rgba(6, 182, 212, 0.25));
+  border-color: var(--primary);
+  box-shadow: 0 6px 20px rgba(99, 102, 241, 0.25);
+}
+
+nav a.primary .arrow {
+  color: #A5B4FC;
+}
+
+footer {
+  margin-top: 28px;
+  padding-top: 18px;
+  border-top: 1px solid var(--panel-border);
+  text-align: center;
+  font-size: 0.8rem;
+  font-family: 'JetBrains Mono', monospace;
+  color: var(--text-sub);
+}
+
+@media (max-width: 460px) {
+  .panel {
+    padding: 26px 20px 24px;
+  }
+  h1 {
+    font-size: 1.55rem;
+  }
+}
