@@ -8,11 +8,25 @@
 
     <script>
         function calculateGrade() {
-            // Retrieve the input and convert it to a number
-            let score = Number(document.getElementById("score").value);
+            let rawScore = document.getElementById("score").value.trim();
+
+            // Validation 1: Check for empty input
+            if (rawScore === "") {
+                document.getElementById("result").innerHTML = "Please enter your score.";
+                return;
+            }
+
+            let score = Number(rawScore);
+
+            // Validation 2: Check for valid number
+            if (isNaN(score)) {
+                document.getElementById("result").innerHTML = "Please enter a valid numeric score.";
+                return;
+            }
+
             let grade = "";
 
-            // Check for out-of-bounds scores first
+            // Validation 3: Check for out-of-bounds scores
             if (score < 0 || score > 100) {
                 grade = "Invalid Score";
             } 
@@ -29,19 +43,26 @@
                 grade = "D";
             } 
             else {
-                // If it's valid and below 50, it must be an F
                 grade = "F"; 
             }
 
-            // Output the final result to the HTML paragraph
+            // Output the final result to the LCD screen
             if (grade === "Invalid Score") {
                 document.getElementById("result").innerHTML = "Please enter a valid score between 0 and 100.";
             } else {
                 document.getElementById("result").innerHTML = "You got Grade " + grade;
             }
         }
-    </script>
 
+        // BOM Back function with fallback
+        function goBack() {
+            if (window.history.length > 1) {
+                window.history.back();
+            } else {
+                window.location.href = "index.html";
+            }
+        }
+    </script>
 </head>
 
 <body>
@@ -54,12 +75,13 @@
     <div class="screen" id="result"></div>
 
     <div class="field">
-        <label for="score">Enter your score</label>
-        <input type="number" id="score">
+        <label for="score">Enter your score (0 - 100)</label>
+        <input type="number" id="score" placeholder="e.g. 85" onkeyup="if(event.key==='Enter') calculateGrade()">
     </div>
 
     <div class="keys">
         <button class="key key--accent" onclick="calculateGrade()">Submit</button>
+        <button class="key" onclick="goBack()">Back</button>
     </div>
 </div>
 

@@ -5,25 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Distance from University</title>
     <link rel="stylesheet" href="Change-style.css">
-    <style>
-        body { 
-            font-family: Arial, sans-serif; 
-            margin: 40px; 
-            background-color: #f8f9fa;
-        }
-        button { 
-            margin-right: 10px; 
-            padding: 8px 16px; 
-            cursor: pointer;
-        }
-        #result { 
-            margin-top: 20px; 
-            font-size: 1.1em;
-            line-height: 1.6;
-        }
-    </style>
+
     <script>
-        // Coordinates for Kasem Bundit University
+        // Coordinates for Kasem Bundit University (Pattanakarn Campus)
         const uniLat = 13.7384;
         const uniLon = 100.6279;
 
@@ -44,40 +28,48 @@
                     let x = userLat - uniLat;
                     let y = userLon - uniLon;
 
-                    // 4. Apply the formula: Distance = sqrt(x^2 + y^2)
+                    // 4. Apply Euclidean formula: Distance = sqrt(x^2 + y^2)
                     let distance = Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2));
 
-                    // 5. Output the results to the screen
+                    // 5. Output the results to the LCD screen
                     output.innerHTML = 
-                        "<strong>University Coordinates:</strong> " + uniLat.toFixed(4) + ", " + uniLon.toFixed(4) + "<br>" +
-                        "<strong>Your Coordinates:</strong> " + userLat.toFixed(4) + ", " + userLon.toFixed(4) + "<br><br>" +
-                        "<strong>Raw Distance (Coordinate Units): " + distance.toFixed(4) + "</strong>";
+                        "<strong>KBU Coords:</strong> " + uniLat.toFixed(4) + ", " + uniLon.toFixed(4) + "<br>" +
+                        "<strong>Your Coords:</strong> " + userLat.toFixed(4) + ", " + userLon.toFixed(4) + "<br>" +
+                        "<strong>Distance: " + distance.toFixed(4) + " units</strong>";
 
                 }, function(error) {
-                    // Error handling if the user blocks location access
-                    output.innerHTML = "Error retrieving location: " + error.message;
+                    // Error handling if location permission is denied
+                    output.innerHTML = "Location Error: " + error.message;
                 });
             } else {
                 output.innerHTML = "Geolocation is not supported by this browser.";
             }
         }
 
-        // BOM History function for the Back button
+        // BOM History function for the Back button with fallback
         function goBack() {
-            window.history.back();
+            if (window.history.length > 1) {
+                window.history.back();
+            } else {
+                window.location.href = "index.html";
+            }
         }
     </script>
 </head>
 <body>
 
-    <h2>How far from University?</h2>
-    
-    <div>
-        <button onclick="calculateDistance()">Get Distance</button>
-        <button onclick="goBack()">Back</button>
-    </div>
+    <div class="calculator">
+        <div class="brand"><span><span class="dot"></span>JS LAB · MODEL 100</span><span>DISTANCE</span></div>
 
-    <p id="result">Click the button to find your distance.</p>
+        <h2>How far from University?</h2>
+
+        <div class="screen" id="result">Click button below to find distance from KBU.</div>
+
+        <div class="keys">
+            <button class="key key--accent" onclick="calculateDistance()">Get Distance</button>
+            <button class="key" onclick="goBack()">Back</button>
+        </div>
+    </div>
 
 </body>
 </html>
